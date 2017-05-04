@@ -68,6 +68,11 @@ class HtmlFormatter extends AbstractFormatter
     /**
      * @var array
      */
+    private $defaultParameters;
+
+    /**
+     * @var array
+     */
     private $authentication;
 
     /**
@@ -193,6 +198,14 @@ class HtmlFormatter extends AbstractFormatter
     }
 
     /**
+     * @param array $defaultParameters
+     */
+    public function setDefaultParameters($defaultParameters)
+    {
+        $this->defaultParameters = $defaultParameters;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function renderOne(array $data)
@@ -235,6 +248,7 @@ class HtmlFormatter extends AbstractFormatter
             'defaultBodyFormat'     => $this->defaultBodyFormat,
             'requestFormats'        => $this->requestFormats,
             'defaultRequestFormat'  => $this->defaultRequestFormat,
+            'parameters'            => $this->defaultParameters,
             'date'                  => date(DATE_RFC822),
             'css'                   => file_get_contents(__DIR__ . '/../Resources/public/css/screen.css'),
             'js'                    => file_get_contents(__DIR__ . '/../Resources/public/js/all.js'),
